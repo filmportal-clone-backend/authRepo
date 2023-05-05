@@ -18,7 +18,7 @@ import { VkAuthModule } from './vk-auth/vk-auth.module';
     username: process.env.DBUSER || "postgres",
     password: process.env.DBPASS ||"admin",
     database: process.env.DBNAME ||"auth",
-    models: [User, Role, UserRoles, GoogleUser],
+    models: [User, Role, UserRoles, GoogleUser, VKUser],
     autoLoadModels: true    
     })],
   controllers: [],
