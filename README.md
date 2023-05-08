@@ -1,12 +1,3 @@
-Так как это рабочий репозиторий, то swagger не подключен. Я решил описать основные эндпоинты здесь
-## /auth/registration - запрос на регистрацию через email/password
-## /auth/login - соответсвенно логин
-## /google - авторизация через гугл
-## /vkontakte - через ВК
-
-
-
-
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
 </p>

@@ -9,6 +9,7 @@ import { UserRoles } from './role/userRole.mode';
 import { GoogleAuthModule } from './google-auth/google-auth.module';
 import { GoogleUser } from './google-auth/google.user.model';
 import { VkAuthModule } from './vk-auth/vk-auth.module';
+import { VKUser } from './vk-auth/vk.model';
 
 @Module({
   imports: [AuthModule, UserModule, RoleModule, GoogleAuthModule, VkAuthModule, SequelizeModule.forRoot({

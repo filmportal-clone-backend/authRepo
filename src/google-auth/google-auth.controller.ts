@@ -14,7 +14,8 @@ export class GoogleAuthController {
     @Get('redirect')
     @UseGuards(GoogleAuthGuard)
     googleAuthRedirect(@Req() req) {
-        return {msg: "OK"}
+        const accessToken = req.user;
+        return {accessToken};
     }
     
     @Get('status')
@@ -24,5 +25,5 @@ export class GoogleAuthController {
         } else {
             return { msg: 'Not Authenticated' };
         }
-  }
+    } 
 }

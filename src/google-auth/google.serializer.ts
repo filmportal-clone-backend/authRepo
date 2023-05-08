@@ -3,7 +3,7 @@ import { GoogleAuthService } from "./google-auth.service";
 import { Inject, Injectable } from "@nestjs/common";
 
 @Injectable()
-export class SessionSerializer extends PassportSerializer {
+export class GoogleSessionSerializer extends PassportSerializer {
     constructor(private googleAuthService: GoogleAuthService) {
         super();
         

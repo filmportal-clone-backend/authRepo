@@ -12,12 +12,13 @@ export class GoogleStrategy extends PassportStrategy(Strategy) {
             clientID: process.env.GOOGLE_CLIENT_ID,
             clientSecret: process.env.GOOGLE_SECRET,
             callbackURL: 'http://localhost:3000/google/redirect',
+            display: "popup",
             scope: ['email', 'profile'],
         });
     }
 
     async validate(accessToken: string, refreshToken: string, profile: any) {
         const user = await this.googleAuthService.validateUser({email: profile.emails[0].value, profileName: profile.displayName});
-        return user || null;
+        return accessToken || null;
     }
 }   

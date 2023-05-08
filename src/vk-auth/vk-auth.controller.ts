@@ -13,7 +13,8 @@ export class VkAuthController {
     @Get('redirect')
     @UseGuards(VkAuthGuard)
     vkAuthRedirect(@Req() req) {
-        return {msg: "OK"};
+        const accessToken  = req.user.accessToken;
+        return {accessToken};
     }
 
     @Get('status')
