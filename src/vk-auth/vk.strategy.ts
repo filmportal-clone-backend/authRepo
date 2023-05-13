@@ -15,7 +15,6 @@ export class VKStrategy extends PassportStrategy(Strategy, "vkontakte") {
             scope: ['profile'],
         }, async function(
             accessToken: string,
-            refreshToken: string,
             params: any,
             profile: any,
             done: VerifyCallback

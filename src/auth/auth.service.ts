@@ -1,7 +1,7 @@
 import { HttpException, HttpStatus, Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { CreateUserDto } from 'src/user/dto/user.dto';
-import * as bcrypt from 'bcrypt';
+import * as bcrypt from 'bcryptjs';
 import { UserService } from 'src/user/user.service';
 import { User } from 'src/user/user.model';
 import { LoginDto } from './dto/login.dto';
@@ -13,13 +13,18 @@ export class AuthService {
 
     async registration(userDto: CreateUserDto) {
         const candidate = await this.userService.getUserByEmail(userDto.email);
+        const secretKey = process.env.JWT_SECRET || 'SECRET';
         if(candidate) {
             throw new HttpException('Пользователь с такой почтой уже существует!', HttpStatus.BAD_REQUEST);
         }
     
         const hashPassword = await bcrypt.hash(userDto.password, 5);
-        const user =  await this.userService.createUser({...userDto, password: hashPassword});
-
+        const refreshToken = this.jwtService.sign({email: userDto.email}, {secret: secretKey});
+        console.log(refreshToken);
+        
+        const user =  await this.userService.createUser({...userDto, password: hashPassword, refreshToken: refreshToken});
+        console.log(user);
+        
         return this.generateToken(user);
     }
 
@@ -45,7 +50,7 @@ export class AuthService {
         const secretKey = process.env.JWT_SECRET || 'SECRET';
 
         return {
-            token: this.jwtService.sign(payload, {secret: secretKey})
+            accessToken: this.jwtService.sign(payload, {secret: secretKey}),
         }
     }
 }

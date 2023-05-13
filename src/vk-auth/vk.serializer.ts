@@ -13,9 +13,9 @@ export class VKSessionSerializer extends PassportSerializer {
     }
 
     async deserializeUser(payload: any, done: Function) {
-        const user = await this.vkUserService.findUserByUsername(payload.username);
-        console.log(user);
+        console.log(2);
         
+        const user = await this.vkUserService.findUserByUsername(payload.user.username);
         return user ? done(null, user) : done(null, null);
     }
 }

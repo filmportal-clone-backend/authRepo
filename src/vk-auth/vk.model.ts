@@ -23,6 +23,6 @@ export class VKUser extends Model<VKUser, VkUserCreationAttr> {
     @Column({type: DataType.STRING, allowNull: false})
     displayName: string;
 
-    @Column({type: DataType.STRING, allowNull: false})
+    @Column({type:DataType.STRING, allowNull: false})
     accessToken: string;
 }

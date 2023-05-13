@@ -15,7 +15,7 @@ export class GoogleAuthService {
         return newUser;
     }
 
-    async findUserByEmail(email: string) {
+    async findUserByEmail(email: string) {  
         const user = await this.userRepo.findOne({where: {email}});
         return user;
     }

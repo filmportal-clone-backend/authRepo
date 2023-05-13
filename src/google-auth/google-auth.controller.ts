@@ -14,7 +14,7 @@ export class GoogleAuthController {
     @Get('redirect')
     @UseGuards(GoogleAuthGuard)
     googleAuthRedirect(@Req() req) {
-        const accessToken = req.user;
+        const accessToken = req.user.accessToken;
         return {accessToken};
     }
     

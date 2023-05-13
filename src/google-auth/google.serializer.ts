@@ -14,7 +14,10 @@ export class GoogleSessionSerializer extends PassportSerializer {
     }
 
     async deserializeUser(payload: any, done: Function) {
-        const user = await this.googleAuthService.findUserByEmail(payload.email);
+        console.log(1);
+        console.log(payload);
+        
+        const user = await this.googleAuthService.findUserByEmail(payload.user.email);
         return user ? done(null, user) : done(null, null);
     }
 }

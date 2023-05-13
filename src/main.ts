@@ -10,7 +10,7 @@ async function bootstrap() {
     saveUninitialized: false,
     resave: false,
     cookie: {
-      maxAge: 600000
+      maxAge: 60000
     }
   }))
   app.use(passport.initialize());

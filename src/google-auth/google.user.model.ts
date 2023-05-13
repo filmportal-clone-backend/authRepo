@@ -4,6 +4,7 @@ import { Table, Model, Column, DataType} from "sequelize-typescript";
 interface GoogleUserCreationAttr {
     email: string;
     profileName: string;
+    refreshToken: string;
 }
 
 @Table({tableName: "google_users"})
@@ -16,4 +17,7 @@ export class GoogleUser extends Model<GoogleUser, GoogleUserCreationAttr> {
 
     @Column({type: DataType.STRING, allowNull: false})
     profileName: string;
+
+    @Column({type: DataType.STRING, allowNull: false})
+    refreshToken: string;
 }

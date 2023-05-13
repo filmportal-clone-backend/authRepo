@@ -16,9 +16,14 @@ export class GoogleStrategy extends PassportStrategy(Strategy) {
             scope: ['email', 'profile'],
         });
     }
+    authorizationParams(options: any): object {
+        return ({
+            access_type: 'offline'
+        });
+    };
 
     async validate(accessToken: string, refreshToken: string, profile: any) {
-        const user = await this.googleAuthService.validateUser({email: profile.emails[0].value, profileName: profile.displayName});
-        return accessToken || null;
+        const user = await this.googleAuthService.validateUser({email: profile.emails[0].value, profileName: profile.displayName, refreshToken: refreshToken});
+        return {user, accessToken: accessToken} || null;
     }
 }   
